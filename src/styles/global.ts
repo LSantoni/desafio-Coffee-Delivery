@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     box-shadow: none;
   }
 
-  body, input-security, textarea, button {
+  body, p, input-security, textarea, button {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 1rem;
