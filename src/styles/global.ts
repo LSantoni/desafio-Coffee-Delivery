@@ -8,6 +8,11 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  body {
+    background: ${props => props.theme.background};
+    box-shadow: none;
+  }
+
   body, input-security, textarea, button {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
