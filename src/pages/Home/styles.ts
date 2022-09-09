@@ -7,10 +7,6 @@ export const HomeContainer = styled.main`
   line-height: 1.3;
 `
 
-export const Content = styled.div`
-  
-`
-
 export const HomeHeader = styled.header`
   display: flex;
   flex-direction: row;
@@ -19,12 +15,50 @@ export const HomeHeader = styled.header`
   font-weight: 800;
   font-size: 24px;
 
+  h1 {
+    font-size: 38px;
+  }
+
   div {
     max-width: 36.75rem;
   }
 
+  #home-title {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
   img {
-    max-width: 25rem;
+    max-width: 23.75rem;
     max-height: 22.5rem;
+  }
+
+  svg {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    padding: 5px;
+  }
+`
+
+const COFFEE_COLORS = {
+  orange: 'yellow-dark',
+  yellow: 'yellow',
+  dark_gray: 'base-text',
+  purple: 'purple'
+} as const
+
+interface HomeHeaderProps {
+  coffeeColors: keyof typeof COFFEE_COLORS
+}
+
+export const CoffeeDescription = styled.div<HomeHeaderProps>`
+  display: flex;
+  gap: 12px;
+
+  svg {
+    background: ${props => props.theme[COFFEE_COLORS[props.coffeeColors]]};
+    color: ${props => props.theme.white};
   }
 `
