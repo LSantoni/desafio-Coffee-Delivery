@@ -1,7 +1,11 @@
-import { CoffeeContainer, CoffeeDescription, HomeContainer, HomeHeader } from "./styles";
+import { CoffeeContainer, CoffeeDescription, CoffeeList, CoffeeListContainer, CoffeeValueContainer, HomeContainer, HomeHeader } from "./styles";
 
 import coffeeLogo from '../../assets/icons/home.svg';
-import { ShoppingCart, Timer, Coffee, Package } from "phosphor-react";
+import { ShoppingCart, Timer, Coffee, Package, Plus, Minus } from "phosphor-react";
+
+import cafe from '../../assets/coffees/traditional.svg';
+import coffee from '../../assets/coffees/latte.svg';
+import cubano from '../../assets/coffees/cubano.svg'
 
 export function Home() {
   return (
@@ -39,6 +43,141 @@ export function Home() {
         </div>
         <img src={coffeeLogo} alt="" />
       </HomeHeader>
+      <CoffeeListContainer>
+        <header>
+          Nossos cafés
+        </header>
+        <div id="list">
+          <CoffeeList>
+            <img src={cafe} alt="" />
+            <div>
+              <span id="features">Tradicional</span>
+            </div>
+            <header>
+              Expresso Tadicional
+            </header>
+            <p>O tradicional café feito com água quente e grãos moidos</p>
+            <CoffeeValueContainer>
+              <span>R$ <h2>9,90</h2></span>
+              <div>
+                <button>
+                  <Plus size={14} />
+                </button>
+                <span>1</span>
+                <button>
+                  <Minus size={14} />
+                </button>
+              </div>
+              <a href="">
+                <ShoppingCart size={20} />
+              </a>
+            </CoffeeValueContainer>
+          </CoffeeList>
+          <CoffeeList>
+            <img src={coffee} alt="" />
+            <div>
+              <span id="features">Tradicional</span>
+              <span id="features">Com Leite</span>
+            </div>
+            <header>
+              Expresso Tadicional
+            </header>
+            <p>O tradicional café feito com água quente e grãos moidos</p>
+            <CoffeeValueContainer>
+              <span>R$ <h2>9,90</h2></span>
+              <div>
+                <button>
+                  <Plus size={14} />
+                </button>
+                <span>1</span>
+                <button>
+                  <Minus size={14} />
+                </button>
+              </div>
+              <a href="">
+                <ShoppingCart size={20} />
+              </a>
+            </CoffeeValueContainer>
+          </CoffeeList>
+          <CoffeeList>
+            <img src={cubano} alt="" />
+            <div>
+              <span id="features">Especial</span>
+              <span id="features">Alcoólico</span>
+              <span id="features">Gelado</span>
+            </div>
+            <header>
+              Expresso Tadicional
+            </header>
+            <p>O tradicional café feito com água quente e grãos moidos</p>
+            <CoffeeValueContainer>
+              <span>R$ <h2>9,90</h2></span>
+              <div>
+                <button>
+                  <Plus size={14} />
+                </button>
+                <span>1</span>
+                <button>
+                  <Minus size={14} />
+                </button>
+              </div>
+              <a href="">
+                <ShoppingCart size={20} />
+              </a>
+            </CoffeeValueContainer>
+          </CoffeeList>
+          <CoffeeList>
+            <img src={cafe} alt="" />
+            <div>
+              <span id="features">Tradicional</span>
+            </div>
+            <header>
+              Expresso Tadicional
+            </header>
+            <p>O tradicional café feito com água quente e grãos moidos</p>
+            <CoffeeValueContainer>
+              <span>R$ <h2>9,90</h2></span>
+              <div>
+                <button>
+                  <Plus size={14} />
+                </button>
+                <span>1</span>
+                <button>
+                  <Minus size={14} />
+                </button>
+              </div>
+              <a href="">
+                <ShoppingCart size={20} />
+              </a>
+            </CoffeeValueContainer>
+          </CoffeeList>
+          <CoffeeList>
+            <img src={cafe} alt="" />
+            <div>
+              <span id="features">Tradicional</span>
+            </div>
+            <header>
+              Expresso Tadicional
+            </header>
+            <p>O tradicional café feito com água quente e grãos moidos</p>
+            <CoffeeValueContainer>
+              <span>R$ <h2>9,90</h2></span>
+              <div>
+                <button>
+                  <Plus size={14} />
+                </button>
+                <span>1</span>
+                <button>
+                  <Minus size={14} />
+                </button>
+              </div>
+              <a href="">
+                <ShoppingCart size={20} />
+              </a>
+            </CoffeeValueContainer>
+          </CoffeeList>
+        </div>
+      </CoffeeListContainer>
     </HomeContainer>
   )
 }
