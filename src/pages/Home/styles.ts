@@ -42,6 +42,21 @@ export const HomeHeader = styled.header`
   }
 `
 
+export const CoffeeContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: ${props => props.theme["base-text"]};
+  
+  span, svg {
+    align-self: center;
+  }
+`
+
 const COFFEE_COLORS = {
   orange: 'yellow-dark',
   yellow: 'yellow',

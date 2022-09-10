@@ -1,4 +1,4 @@
-import { CoffeeDescription, HomeContainer, HomeHeader } from "./styles";
+import { CoffeeContainer, CoffeeDescription, HomeContainer, HomeHeader } from "./styles";
 
 import coffeeLogo from '../../assets/icons/home.svg';
 import { ShoppingCart, Timer, Coffee, Package } from "phosphor-react";
@@ -10,7 +10,7 @@ export function Home() {
         <div id="home-title">
           <h1>Encontre o café perfeito para qualquer hora do dia</h1>
           <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
-          <div>
+          <CoffeeContainer>
             <CoffeeDescription coffeeColors="orange">
               <ShoppingCart size={20} /> 
               <span>
@@ -35,7 +35,7 @@ export function Home() {
                 O café chega fresquinho até você
               </span>
             </CoffeeDescription>
-          </div>
+          </CoffeeContainer>
         </div>
         <img src={coffeeLogo} alt="" />
       </HomeHeader>
