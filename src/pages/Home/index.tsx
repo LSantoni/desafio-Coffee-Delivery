@@ -27,8 +27,6 @@ export function Home() {
   function showCoffeeQuantity(coffeeTitle: string) {
     const quantity = coffees.find(coffee => coffee.title === coffeeTitle)?.quantity;
 
-    console.log(coffees)
-
     if(!quantity) {
       return 0
     }
@@ -83,7 +81,7 @@ export function Home() {
                   <img src={imagePath+coffee.url} alt="" />
                   <div>
                       {coffee.features.map(feature => {
-                        return <span id="features">
+                        return <span id="features" key={coffee.title+feature}>
                           { feature }
                         </span>
                       })}
