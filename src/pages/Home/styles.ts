@@ -117,6 +117,7 @@ export const CoffeeList = styled.div`
       color: ${props => props.theme["yellow-dark"]};
       padding: 0.25rem 0.5rem;
       border-radius: 100px;
+      font-size: 0.8125rem;
 
       & + span {
         margin-left: 0.25rem;

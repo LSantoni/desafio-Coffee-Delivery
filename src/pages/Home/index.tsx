@@ -227,7 +227,11 @@ export function Home() {
                 <CoffeeList key={coffee.title}>
                   <img src={imagePath+coffee.url} alt="" />
                   <div>
-                    <span id="features">Tradicional</span>
+                      {coffee.features.map(feature => {
+                        return <span id="features">
+                          { feature }
+                        </span>
+                      })}
                   </div>
                   <header>
                     {coffee.title}
