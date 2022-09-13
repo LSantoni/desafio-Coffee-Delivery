@@ -37,5 +37,20 @@ export const HeaderConteiner = styled.header`
 
       border-radius: 6px;
     }
+
+    p {
+      width: 20px;
+      height: 20px;
+
+      margin-top: -5%;
+      margin-left: -12%;
+      border-radius: 50%;
+
+      background: ${props => props.theme["yellow-dark"]};
+      color: ${props => props.theme.white};
+
+      text-align: center;
+      font-size: 0.9375rem;
+    }
   }
 `

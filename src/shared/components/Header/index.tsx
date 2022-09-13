@@ -12,6 +12,9 @@ export function Header() {
         <a href="">
           <ShoppingCart size={24} />
         </a>
+        <p>
+          3
+        </p>
       </nav>
     </HeaderConteiner>
   )
