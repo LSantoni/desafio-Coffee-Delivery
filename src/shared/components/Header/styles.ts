@@ -42,8 +42,9 @@ export const HeaderConteiner = styled.header`
       width: 20px;
       height: 20px;
 
-      margin-top: -5%;
-      margin-left: -12%;
+      position: absolute;
+      margin-top: -2.25rem;
+      margin-right: -2.25rem;
       border-radius: 50%;
 
       background: ${props => props.theme["yellow-dark"]};

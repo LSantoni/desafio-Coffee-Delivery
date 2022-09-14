@@ -20,10 +20,12 @@ export function Header() {
         <span>endereço</span>
         <a href="">
           <ShoppingCart size={24} />
+          {cartQuantity > 0 && (
+            <p>
+              {handleShowCartQuantity()}
+            </p>
+          )}
         </a>
-        <p>
-          {handleShowCartQuantity()}
-        </p>
       </nav>
     </HeaderConteiner>
   )
