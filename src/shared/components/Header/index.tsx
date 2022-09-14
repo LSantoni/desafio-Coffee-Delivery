@@ -4,12 +4,12 @@ import logoApp from '../../../assets/icons/logo.svg';
 import { ShoppingCart } from "phosphor-react";
 import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
+import { NavLink } from "react-router-dom"
 
 export function Header() {
   const { cartQuantity } = useContext(CartContext)
 
   function handleShowCartQuantity() {
-    console.log(cartQuantity)
     return cartQuantity;
   }
 
@@ -18,14 +18,14 @@ export function Header() {
       <img src={logoApp} alt="" />
       <nav>
         <span>endereço</span>
-        <a href="">
+        <NavLink to="/checkout">
           <ShoppingCart size={24} />
           {cartQuantity > 0 && (
             <p>
               {handleShowCartQuantity()}
             </p>
           )}
-        </a>
+        </NavLink>
       </nav>
     </HeaderConteiner>
   )
