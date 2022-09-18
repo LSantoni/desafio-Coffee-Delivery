@@ -90,3 +90,39 @@ export const CartItemDescriptionButtons = styled.div`
     display: flex;
   }
 `
+
+export const CartSummary = styled.div`
+  div {
+    display: flex;
+    justify-content: space-between;
+
+    & + div {
+      margin-top: 0.75rem;
+    }
+
+    p {
+      color: ${props => props.theme["base-text"]};
+    }
+  }
+
+  #total {
+    p {
+      color: ${props => props.theme["base-subtitle"]};
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+  }
+`
+
+export const ConfirmButton = styled.button`
+  background: ${props => props.theme.yellow};
+  color: ${props => props.theme.white};
+
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+
+  margin: 1.5rem 0 0;
+
+  text-align: center;
+`

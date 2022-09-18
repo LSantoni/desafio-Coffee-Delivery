@@ -1,4 +1,4 @@
-import { CartItem, CartItemDescription, CartItemDescriptionButtons, CheckoutContainer, ClienteData, CoffeeData } from "./styles";
+import { CartItem, CartItemDescription, CartItemDescriptionButtons, CartSummary, CheckoutContainer, ClienteData, CoffeeData, ConfirmButton } from "./styles";
 
 import { MapPinLine, MapPin, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, Trash } from "phosphor-react"
 
@@ -124,19 +124,21 @@ export function Checkout() {
               </CartItemDescription>
               R$ 9,90
             </CartItem>
-            <div>
-              Total de itens
-              R$ 29,70
-            </div>
-            <div>
-              Entrega
-              R$ 3,50
-            </div>
-            <div>
-              Total
-              R$ 33,20
-            </div>
-            <button>Confirmar Pedido</button>
+            <CartSummary>
+              <div>
+                <p>Total de itens</p>
+                <p>R$ 29,70</p>
+              </div>
+              <div>
+                <p>Entrega</p>
+                <p>R$ 3,50</p>
+              </div>
+              <div id="total">
+                <p>Total</p>
+                <p>R$ 33,20</p>
+              </div>
+            </CartSummary>
+            <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>
           </div>
         </CoffeeData>
       </form>
