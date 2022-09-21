@@ -1,4 +1,4 @@
-import { CartItem, CartItemDescription, CartItemDescriptionButtons, CartSummary, CheckoutContainer, ClienteData, CoffeeData, ConfirmButton } from "./styles";
+import { AddressContainer, CartItem, CartItemDescription, CartItemDescriptionButtons, CartSummary, CheckoutContainer, ClienteData, CoffeeData, ConfirmButton, InputS1, InputS2, InputS3, InputS4, InputS5, PaymentContainer } from "./styles";
 
 import { MapPinLine, MapPin, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, Trash } from "phosphor-react"
 
@@ -10,31 +10,31 @@ export function Checkout() {
       <form action="">
         <ClienteData>
           <header id="page-header">Complete seu pedido</header>
-          <div>
+          <AddressContainer>
             <header>
               <MapPinLine size={20} />
-              <p>Endereço de Entrega</p>
-              <p>Informe o endereço onde deseja receber seu pedido</p>
+              <div>
+                <p>Endereço de Entrega</p>
+                <p>Informe o endereço onde deseja receber seu pedido</p>
+              </div>
             </header>
             <div>
-              <input type="text" placeholder="CEP" />
-              <input type="text" />
-              <div>
-                <input type="text" />
-                <input type="text" />
-              </div>
-              <div>
-                <input type="text" />
-                <input type="text" />
-                <input type="text" />
-              </div>
+              <InputS2 type="text" placeholder="CEP" />
+              <InputS5 type="text" placeholder="Rua" />
+              <InputS2 type="text" placeholder="Número" />
+              <InputS4 type="text" placeholder="Complemento" />
+              <InputS2 type="text" placeholder="Bairro" />
+              <InputS3 type="text" placeholder="Cidade" />
+              <InputS1 type="text" placeholder="UF" />
             </div>
-          </div>
-          <div>
+          </AddressContainer>
+          <PaymentContainer>
             <header>
               <CurrencyDollar size={20} />
-              <p>Pagamento</p>
-              <p>O pagamento é feito na entrega. Escolha a forma que deseja  pagar</p>
+              <div>
+                <p>Pagamento</p>
+                <p>O pagamento é feito na entrega. Escolha a forma que deseja  pagar</p>
+              </div>
             </header>
             <div>
               <div>
@@ -53,7 +53,7 @@ export function Checkout() {
                 DINHEIRO
               </div>
             </div>
-          </div>
+          </PaymentContainer>
         </ClienteData>
         <CoffeeData>
           <header>Cafés selecionados</header>

@@ -15,9 +15,86 @@ export const ClienteData = styled.div`
   max-width: 40rem;
   width: 100%;
 
-  #page-header {
+  header {
     color: ${props => props.theme["base-subtitle"]};
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+`
+
+export const ClientDataBaseContainer = styled.div`
+  background: ${props => props.theme["base-card"]};
+
+  header {
+    display: flex;
+    gap: 0.5rem;
+
+    text-shadow: none;
+
+    p + p {
+      color: ${props => props.theme["base-text"]};
+    }
+
+    margin-bottom: 2rem;
+  }
+
+  padding: 2.5rem;
+`
+
+export const AddressContainer = styled(ClientDataBaseContainer)`
+  margin-top: 0.9375rem;
+
+  svg {
+    color: ${props => props.theme["yellow-dark"]};
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 40rem;
+    gap: 0.75rem;
+  }
+`
+
+const BaseInput = styled.input`
+  background: ${props => props.theme["base-input"]};
+  height: 2.5rem;
+  padding: 0.75rem;
+
+  border: 1px solid ${props => props.theme["base-button"]};
+  border-radius: 4px;
+
+  :focus {
+    outline: 0;
+    border: 1px solid ${props => props.theme["yellow-dark"]};
+  }
+`
+
+export const InputS5 = styled(BaseInput)`
+  width: 35rem;
+`
+
+export const InputS4 = styled(BaseInput)`
+  width: 21.75rem;
+`
+
+export const InputS3 = styled(BaseInput)`
+  width: 17.25rem;
+`
+
+export const InputS2 = styled(BaseInput)`
+  width: 12.5rem;
+`
+
+export const InputS1 = styled(BaseInput)`
+  width: 3.75rem;
+`
+
+export const PaymentContainer = styled(ClientDataBaseContainer)`
+  margin-top: 0.75rem;
+
+  svg {
+    color: ${props => props.theme.purple};
   }
 `
 
@@ -125,4 +202,8 @@ export const ConfirmButton = styled.button`
   margin: 1.5rem 0 0;
 
   text-align: center;
+
+  :hover {
+    background: ${props => props.theme["yellow-dark"]};
+  }
 `
