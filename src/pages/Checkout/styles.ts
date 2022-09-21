@@ -137,6 +137,8 @@ export const CartItemDescription = styled.div`
 
     border-radius: 6px;
 
+    cursor: pointer;
+
     span {
       background: ${props => props.theme["base-button"]};
 
@@ -146,6 +148,14 @@ export const CartItemDescription = styled.div`
       svg {
         color: ${props => props.theme["purple"]};
         vertical-align: middle;
+      }
+
+      :hover {
+        background: ${props => props.theme["base-hover"]};
+
+        svg {
+          color: ${props => props.theme["purple-dark"]};
+        }
       }
     }
   }
@@ -165,6 +175,10 @@ export const CartItemDescriptionButtons = styled.div`
     color: ${props => props.theme["purple"]};
     background: transparent;
     display: flex;
+
+    :hover {
+      color: ${props => props.theme["purple-dark"]};
+    }
   }
 `
 
