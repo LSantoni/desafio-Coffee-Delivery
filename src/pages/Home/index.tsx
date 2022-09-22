@@ -2,9 +2,9 @@ import { CoffeeContainer, CoffeeDescription, CoffeeList, CoffeeListContainer, Co
 
 import coffeeLogo from '../../assets/icons/home.svg';
 import { ShoppingCart, Timer, Coffee, Package, Plus, Minus } from "phosphor-react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
-import { CartContext, CoffeeCart } from "../../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 import { coffeeList } from "../../shared/utils/coffeeList";
 
 const imagePath = 'src/assets/coffees/';

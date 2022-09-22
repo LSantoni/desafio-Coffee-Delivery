@@ -2,9 +2,35 @@ import { AddressContainer, CartItem, CartItemDescription, CartItemDescriptionBut
 
 import { MapPinLine, MapPin, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, Trash } from "phosphor-react"
 
-import tradicional from '../../assets/coffees/traditional.svg'
+const imagePath = 'src/assets/coffees/';
+
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 export function Checkout() {
+  const { coffees, cartSubTotal, addCoffeeInCart, withDrawCoffeeInCart } = useContext(CartContext);
+
+  const deliveryPrice = 3.50;
+  const cartTotal = cartSubTotal + deliveryPrice;
+
+  function handleAddCoffee(coffeeTitle: string) {
+    addCoffeeInCart(coffeeTitle)
+  }
+
+  function handleWithDrawCoffee(coffeeTitle: string) {
+    withDrawCoffeeInCart(coffeeTitle)
+  }
+
+  function showCoffeeQuantity(coffeeTitle: string) {
+    const quantity = coffees.find(coffee => coffee.title === coffeeTitle)?.quantity;
+
+    if(!quantity) {
+      return 0
+    }
+
+    return quantity
+  }
+
   return (
     <CheckoutContainer>
       <form action="">
@@ -37,7 +63,7 @@ export function Checkout() {
               </div>
             </header>
             <PaymentSelect>
-              <input type="radio" name="credito" id="cred" checked={true} />
+              <input type="radio" name="credito" id="cred" />
               <div>
                 <CreditCard size={20} />
                 CARTÃO DE CRÉDITO
@@ -58,84 +84,46 @@ export function Checkout() {
         <div>
           <header>Cafés selecionados</header>
           <CoffeeData>
-            <CartItem>
-              <img src={tradicional} alt="" />
-              <CartItemDescription>
-                <p>Expresso Tradicional</p>
-                <div>
-                  <CartItemDescriptionButtons>
-                    <button /*onClick={() => handleWithDrawCoffee(coffee.title)}*/>
-                      <Minus size={14} />
-                    </button>
-                    <span>{1/*showCoffeeQuantity(coffee.title)*/}</span>
-                    <button /*onClick={() => handleAddCoffee(coffee.title)}*/>
-                      <Plus size={14} />
-                    </button>
-                  </CartItemDescriptionButtons>
-                  <span id="btn-remove">
-                    <Trash size={16} />
-                    REMOVER
-                  </span>
-                </div>
-              </CartItemDescription>
-              R$ 9,90
-            </CartItem>
-            <CartItem>
-              <img src={tradicional} alt="" />
-              <CartItemDescription>
-                <p>Expresso Tradicional</p>
-                <div>
-                  <CartItemDescriptionButtons>
-                    <button /*onClick={() => handleWithDrawCoffee(coffee.title)}*/>
-                      <Minus size={14} />
-                    </button>
-                    <span>{1/*showCoffeeQuantity(coffee.title)*/}</span>
-                    <button /*onClick={() => handleAddCoffee(coffee.title)}*/>
-                      <Plus size={14} />
-                    </button>
-                  </CartItemDescriptionButtons>
-                  <span id="btn-remove">
-                    <Trash size={16} />
-                    REMOVER
-                  </span>
-                </div>
-              </CartItemDescription>
-              R$ 9,90
-            </CartItem>
-            <CartItem>
-              <img src={tradicional} alt="" />
-              <CartItemDescription>
-                <p>Expresso Tradicional</p>
-                <div>
-                  <CartItemDescriptionButtons>
-                    <button /*onClick={() => handleWithDrawCoffee(coffee.title)}*/>
-                      <Minus size={14} />
-                    </button>
-                    <span>{1/*showCoffeeQuantity(coffee.title)*/}</span>
-                    <button /*onClick={() => handleAddCoffee(coffee.title)}*/>
-                      <Plus size={14} />
-                    </button>
-                  </CartItemDescriptionButtons>
-                  <span id="btn-remove">
-                    <Trash size={16} />
-                    REMOVER
-                  </span>
-                </div>
-              </CartItemDescription>
-              R$ 9,90
-            </CartItem>
+            {
+              coffees.map(coffee => {
+                return (
+                  <CartItem key={coffee.title}>
+                    <img src={imagePath+coffee.url} alt="" />
+                    <CartItemDescription>
+                      <p>Expresso Tradicional</p>
+                      <div>
+                        <CartItemDescriptionButtons>
+                          <button onClick={() => handleWithDrawCoffee(coffee.title)}>
+                            <Minus size={14} />
+                          </button>
+                          <span>{showCoffeeQuantity(coffee.title)}</span>
+                          <button onClick={() => handleAddCoffee(coffee.title)}>
+                            <Plus size={14} />
+                          </button>
+                        </CartItemDescriptionButtons>
+                        <span id="btn-remove">
+                          <Trash size={16} />
+                          REMOVER
+                        </span>
+                      </div>
+                    </CartItemDescription>
+                    {coffee.price}
+                  </CartItem>
+                )
+              })
+            }          
             <CartSummary>
               <div>
                 <p>Total de itens</p>
-                <p>R$ 29,70</p>
+                <p>{cartSubTotal}</p>
               </div>
               <div>
                 <p>Entrega</p>
-                <p>R$ 3,50</p>
+                <p>{deliveryPrice}</p>
               </div>
               <div id="total">
                 <p>Total</p>
-                <p>R$ 33,20</p>
+                <p>{cartTotal}</p>
               </div>
             </CartSummary>
             <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>

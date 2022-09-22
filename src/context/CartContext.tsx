@@ -12,7 +12,7 @@ interface CartContextType {
   addCoffeeInCart: (title: string) => void;
   withDrawCoffeeInCart: (title: string) => void;
   cartQuantity: number;
-  // subTotal: number;
+  cartSubTotal: number;
   // delivery: number;
   // total: number;
 }
@@ -36,6 +36,7 @@ export function CartContexProvider({children}: CartContextProviderProps) {
   // let cart: CartContextType;
   const [coffees, setCoffees] = useState<CoffeeCart[]>([])
   const [cartQuantity, setCartQuantity] = useState(0);
+  const [cartSubTotal, setCartSubTotal] = useState(0);
 
   // const [cartState, dispatch] = useReducer(cartReducer, {
   //   coffees: [],
@@ -75,6 +76,8 @@ export function CartContexProvider({children}: CartContextProviderProps) {
 
     const newQuantity = cartQuantity+1;
     setCartQuantity(newQuantity)
+
+    calculatePrice();
   }
 
   function withDrawCoffeeInCart(coffeeTitle: string) {
@@ -97,7 +100,20 @@ export function CartContexProvider({children}: CartContextProviderProps) {
 
       const newQuantity = cartQuantity-1;
       setCartQuantity(newQuantity)
+
+      calculatePrice()
+
+      console.log(coffees)
     }
+  }
+
+  function calculatePrice() {
+    let subTotalPrice = 0;
+    coffees.map(c => {
+      subTotalPrice += c.quantity * c.price;
+    });
+
+    setCartSubTotal(subTotalPrice);
   }
   
   return(
@@ -105,6 +121,7 @@ export function CartContexProvider({children}: CartContextProviderProps) {
       value={{
         coffees,
         cartQuantity,
+        cartSubTotal,
         addCoffeeInCart,
         withDrawCoffeeInCart
       }}
