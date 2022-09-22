@@ -8,6 +8,11 @@ export const CheckoutContainer = styled.main`
     flex: 1;
     justify-content: space-between;
     gap: 2rem;
+
+    header {
+      margin-bottom: 0.9375rem;
+      color: ${props => props.theme["base-subtitle"]};
+    }
   }
 `
 

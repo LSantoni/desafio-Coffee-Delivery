@@ -55,9 +55,9 @@ export function Checkout() {
             </PaymentSelect>
           </PaymentContainer>
         </ClienteData>
-        <CoffeeData>
+        <div>
           <header>Cafés selecionados</header>
-          <div>
+          <CoffeeData>
             <CartItem>
               <img src={tradicional} alt="" />
               <CartItemDescription>
@@ -139,8 +139,8 @@ export function Checkout() {
               </div>
             </CartSummary>
             <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>
-          </div>
-        </CoffeeData>
+          </CoffeeData>
+        </div>
       </form>
     </CheckoutContainer>
   )
