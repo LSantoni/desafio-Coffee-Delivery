@@ -1,4 +1,4 @@
-import { AddressContainer, CartItem, CartItemDescription, CartItemDescriptionButtons, CartSummary, CheckoutContainer, ClienteData, CoffeeData, ConfirmButton, InputS1, InputS2, InputS3, InputS4, InputS5, PaymentContainer } from "./styles";
+import { AddressContainer, CartItem, CartItemDescription, CartItemDescriptionButtons, CartSummary, CheckoutContainer, ClienteData, CoffeeData, ConfirmButton, InputS1, InputS2, InputS3, InputS4, InputS5, PaymentContainer, PaymentSelect } from "./styles";
 
 import { MapPinLine, MapPin, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, Trash } from "phosphor-react"
 
@@ -36,23 +36,23 @@ export function Checkout() {
                 <p>O pagamento é feito na entrega. Escolha a forma que deseja  pagar</p>
               </div>
             </header>
-            <div>
+            <PaymentSelect>
+              <input type="radio" name="credito" id="cred" checked={true} />
               <div>
                 <CreditCard size={20} />
-                <input type="checkbox" name="" id="" />
                 CARTÃO DE CRÉDITO
               </div>
+              <input type="radio" name="debito" id="deb" />
               <div>
                 <Bank size={20} />
-                <input type="checkbox" name="" id="" />
                 CARTÃO DE DÉBITO
               </div>
+              <input type="radio" name="dinheiro" id="din" />
               <div>
                 <Money size={20} />
-                <input type="checkbox" name="" id="" />
                 DINHEIRO
               </div>
-            </div>
+            </PaymentSelect>
           </PaymentContainer>
         </ClienteData>
         <CoffeeData>
