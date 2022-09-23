@@ -1,6 +1,6 @@
 import { AddressContainer, CartItem, CartItemDescription, CartItemDescriptionButtons, CartSummary, CheckoutContainer, ClienteData, CoffeeData, ConfirmButton, InputS1, InputS2, InputS3, InputS4, InputS5, PaymentContainer, PaymentSelect } from "./styles";
 
-import { MapPinLine, MapPin, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, Trash } from "phosphor-react"
+import { MapPinLine, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, Trash } from "phosphor-react"
 
 const imagePath = 'src/assets/coffees/';
 
