@@ -126,7 +126,7 @@ export function Checkout() {
                 <p>{cartTotal}</p>
               </div>
             </CartSummary>
-            <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>
+            <ConfirmButton type="submit">CONFIRMAR PEDIDO</ConfirmButton>
           </CoffeeData>
         </div>
       </form>
