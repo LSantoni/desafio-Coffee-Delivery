@@ -1,4 +1,5 @@
 import { AddressContainer, CartItem, CartItemDescription, CartItemDescriptionButtons, CartSummary, CheckoutContainer, ClienteData, CoffeeData, ConfirmButton, InputS1, InputS2, InputS3, InputS4, InputS5, PaymentContainer, PaymentSelect } from "./styles";
+import { useForm } from 'react-hook-form'
 
 import { MapPinLine, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, Trash } from "phosphor-react"
 
@@ -8,10 +9,16 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
 export function Checkout() {
+  const { register, handleSubmit, reset } = useForm()
   const { coffees, cartSubTotal, addCoffeeInCart, withDrawCoffeeInCart } = useContext(CartContext);
 
   const deliveryPrice = 3.50;
   const cartTotal = cartSubTotal + deliveryPrice;
+
+  function handleCreateNewAddress(data: any) {
+    console.log(data)
+    reset()
+  }
 
   function handleAddCoffee(coffeeTitle: string) {
     addCoffeeInCart(coffeeTitle)
@@ -33,7 +40,7 @@ export function Checkout() {
 
   return (
     <CheckoutContainer>
-      <form action="">
+      <form onSubmit={handleSubmit(handleCreateNewAddress)} action="">
         <ClienteData>
           <header id="page-header">Complete seu pedido</header>
           <AddressContainer>
@@ -45,13 +52,42 @@ export function Checkout() {
               </div>
             </header>
             <div>
-              <InputS2 type="text" placeholder="CEP" />
-              <InputS5 type="text" placeholder="Rua" />
-              <InputS2 type="text" placeholder="Número" />
-              <InputS4 type="text" placeholder="Complemento" />
-              <InputS2 type="text" placeholder="Bairro" />
-              <InputS3 type="text" placeholder="Cidade" />
-              <InputS1 type="text" placeholder="UF" />
+              <InputS2 
+                type="text" 
+                placeholder="CEP" 
+                {...register('cep')} 
+              />
+              <InputS5 
+                type="text" 
+                placeholder="Rua"
+                {...register('rua')} 
+              />
+              <InputS2 
+                type="number" 
+                placeholder="Número"
+                {...register('numero', { valueAsNumber: true })}
+              />
+              <InputS4 
+                type="text" 
+                placeholder="Complemento"
+                {...register('complemento')}
+              />
+              <InputS2 
+                type="text" 
+                placeholder="Bairro"
+                {...register('bairro')}
+              />
+              <InputS3 
+                type="text" 
+                placeholder="Cidade"
+                {...register('cidade')}
+              />
+              <InputS1 
+                type="text" 
+                placeholder="UF"
+                maxLength={2}
+                {...register('uf')}
+              />
             </div>
           </AddressContainer>
           <PaymentContainer>
