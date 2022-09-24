@@ -9,7 +9,6 @@ import { CartContext } from '../../context/CartContext';
 export function DeliveryCompleted() {
 
   const { resume } = useContext(CartContext);
-  console.log(resume)
 
   return (
     <DesliveryCompletedContainer>
@@ -23,8 +22,8 @@ export function DeliveryCompleted() {
             <DeliveryInfo coffeeColors="purple">
               <MapPin size={20} />
               <div>
-                <p>Entrega em <span>Rua João Daniel Matinelli, 102</span></p>
-                <p>Farrapos - Poto Alegre, RS</p>
+                <p>Entrega em <span>{resume?.address}, {resume?.number}</span></p>
+                <p>{resume?.city} - {resume?.district}, {resume?.state}</p>
               </div>
             </DeliveryInfo>
             <DeliveryInfo coffeeColors="yellow">
@@ -38,7 +37,7 @@ export function DeliveryCompleted() {
               <CurrencyDollar size={20} />
               <div>
                 <p>Pagamento na entrega</p>
-                <p><span>Cartão de Crédito</span></p>
+                <p><span>{resume?.payment}</span></p>
               </div>
             </DeliveryInfo>
           </div>

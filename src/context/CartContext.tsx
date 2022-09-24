@@ -6,8 +6,10 @@ export interface CoffeeCart extends Coffee {
 }
 
 export interface ResumeInfo {
+  zipCode: string;
   address: string;
   number: number;
+  complemento: string;
   district: string;
   city: string;
   state: string;

@@ -60,38 +60,38 @@ export function Checkout() {
               <InputS2 
                 type="text" 
                 placeholder="CEP" 
-                {...register('cep')} 
+                {...register('zipCode')} 
               />
               <InputS5 
                 type="text" 
                 placeholder="Rua"
-                {...register('rua')} 
+                {...register('address')} 
               />
               <InputS2 
                 type="number" 
                 placeholder="Número"
-                {...register('numero', { valueAsNumber: true })}
+                {...register('number', { valueAsNumber: true })}
               />
               <InputS4 
                 type="text" 
                 placeholder="Complemento"
-                {...register('complemento')}
+                {...register('complement')}
               />
               <InputS2 
                 type="text" 
                 placeholder="Bairro"
-                {...register('bairro')}
+                {...register('district')}
               />
               <InputS3 
                 type="text" 
                 placeholder="Cidade"
-                {...register('cidade')}
+                {...register('city')}
               />
               <InputS1 
                 type="text" 
                 placeholder="UF"
                 maxLength={2}
-                {...register('uf')}
+                {...register('state')}
               />
             </div>
           </AddressContainer>
@@ -107,7 +107,7 @@ export function Checkout() {
               <input
                 type="radio" 
                 id="cred"
-                value="credito"
+                value="Cartão de Crédito"
                 {...register('payment')}
               />
               <label htmlFor="cred">
@@ -117,7 +117,7 @@ export function Checkout() {
               <input 
                 type="radio"
                 id="deb"
-                value="debito"
+                value="Cartão de Débito"
                 {...register('payment')}
               />
               <label htmlFor="deb">
@@ -127,7 +127,7 @@ export function Checkout() {
               <input 
                 type="radio"
                 id="din"
-                value="dinheiro"
+                value="Dinheiro"
                 {...register('payment')}
               />
               <label htmlFor="din">
