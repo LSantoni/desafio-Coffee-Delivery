@@ -11,10 +11,10 @@ import { CartContext } from "../../context/CartContext";
 
 export function Checkout() {
   const { register, handleSubmit, reset } = useForm()
-  const { coffees, cartSubTotal, addCoffeeInCart, withDrawCoffeeInCart, addResumeInfo } = useContext(CartContext);
+  const { coffees, cartSubTotal, addCoffeeInCart, withDrawCoffeeInCart, addResumeInfo, calculatePrice } = useContext(CartContext);
 
   const deliveryPrice = 3.50;
-  const cartTotal = cartSubTotal + deliveryPrice;
+  const cartTotal = calculatePrice() + deliveryPrice;
 
   const navigate = useNavigate();
 
@@ -171,7 +171,7 @@ export function Checkout() {
             <CartSummary>
               <div>
                 <p>Total de itens</p>
-                <p>{cartSubTotal}</p>
+                <p>{calculatePrice()}</p>
               </div>
               <div>
                 <p>Entrega</p>

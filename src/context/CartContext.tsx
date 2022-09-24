@@ -18,12 +18,13 @@ export interface ResumeInfo {
 
 interface CartContextType {
   coffees: CoffeeCart[];
-  addCoffeeInCart: (title: string) => void;
-  withDrawCoffeeInCart: (title: string) => void;
   cartQuantity: number;
   cartSubTotal: number;
-  addResumeInfo: (data: ResumeInfo) => void;
   resume: ResumeInfo | undefined;
+  addCoffeeInCart: (title: string) => void;
+  withDrawCoffeeInCart: (title: string) => void;
+  addResumeInfo: (data: ResumeInfo) => void;
+  calculatePrice: () => number;
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -68,11 +69,7 @@ export function CartContexProvider({children}: CartContextProviderProps) {
 
     const newQuantity = cartQuantity+1;
     setCartQuantity(newQuantity)
-
-    calculatePrice();
   }
-
-
 
   function withDrawCoffeeInCart(coffeeTitle: string) {
     const existCoffee = coffees.find(coffee => coffee.title === coffeeTitle);
@@ -94,10 +91,6 @@ export function CartContexProvider({children}: CartContextProviderProps) {
 
       const newQuantity = cartQuantity-1;
       setCartQuantity(newQuantity)
-
-      calculatePrice()
-
-      console.log(coffees)
     }
   }
 
@@ -108,6 +101,8 @@ export function CartContexProvider({children}: CartContextProviderProps) {
     });
 
     setCartSubTotal(subTotalPrice);
+
+    return cartSubTotal;
   }
 
   function addResumeInfo(data: ResumeInfo) {
@@ -123,7 +118,8 @@ export function CartContexProvider({children}: CartContextProviderProps) {
         resume,
         addResumeInfo,
         addCoffeeInCart,
-        withDrawCoffeeInCart
+        withDrawCoffeeInCart,
+        calculatePrice
       }}
     >
       {children}
