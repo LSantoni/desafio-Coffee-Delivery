@@ -3,8 +3,14 @@ import { MapPin, CurrencyDollar, Timer } from 'phosphor-react'
 import { Content, DeliveryInfo, DeliveryInfoContainer, DesliveryCompletedContainer } from './styles'
 
 import delivery from '../../assets/icons/delivery.svg';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 export function DeliveryCompleted() {
+
+  const { resume } = useContext(CartContext);
+  console.log(resume)
+
   return (
     <DesliveryCompletedContainer>
       <Content>

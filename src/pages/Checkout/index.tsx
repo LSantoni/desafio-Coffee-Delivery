@@ -10,8 +10,8 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
 export function Checkout() {
-  const { register, handleSubmit, reset, watch } = useForm()
-  const { coffees, cartSubTotal, addCoffeeInCart, withDrawCoffeeInCart } = useContext(CartContext);
+  const { register, handleSubmit, reset } = useForm()
+  const { coffees, cartSubTotal, addCoffeeInCart, withDrawCoffeeInCart, addResumeInfo } = useContext(CartContext);
 
   const deliveryPrice = 3.50;
   const cartTotal = cartSubTotal + deliveryPrice;
@@ -19,7 +19,7 @@ export function Checkout() {
   const navigate = useNavigate();
 
   function handleCreateNewAddress(data: any) {
-    console.log(data)
+    addResumeInfo(data);
     reset()
 
     navigate('/resume')
@@ -149,11 +149,11 @@ export function Checkout() {
                       <p>Expresso Tradicional</p>
                       <div>
                         <CartItemDescriptionButtons>
-                          <button onClick={() => handleWithDrawCoffee(coffee.title)}>
+                          <button type="button" onClick={() => handleWithDrawCoffee(coffee.title)}>
                             <Minus size={14} />
                           </button>
                           <span>{showCoffeeQuantity(coffee.title)}</span>
-                          <button onClick={() => handleAddCoffee(coffee.title)}>
+                          <button type="button" onClick={() => handleAddCoffee(coffee.title)}>
                             <Plus size={14} />
                           </button>
                         </CartItemDescriptionButtons>

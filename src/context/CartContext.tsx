@@ -1,10 +1,17 @@
-import { produce } from 'immer'
-
 import { createContext, ReactNode, useReducer, useState } from "react";
 import { Coffee, coffeeList } from '../shared/utils/coffeeList';
 
 export interface CoffeeCart extends Coffee {
   quantity: number;
+}
+
+export interface ResumeInfo {
+  address: string;
+  number: number;
+  district: string;
+  city: string;
+  state: string;
+  payment: string;
 }
 
 interface CartContextType {
@@ -13,8 +20,8 @@ interface CartContextType {
   withDrawCoffeeInCart: (title: string) => void;
   cartQuantity: number;
   cartSubTotal: number;
-  // delivery: number;
-  // total: number;
+  addResumeInfo: (data: ResumeInfo) => void;
+  resume: ResumeInfo | undefined;
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -23,29 +30,12 @@ interface CartContextProviderProps {
   children: ReactNode;
 }
 
-// function cartReducer(state: CartContextType, action: any) {
-//   return produce(state, (draft) => {
-//     draft.coffees.push()
-//     // draft.total = 0,
-//     // draft.subTotal = 0,
-//     // draft.delivery = 0
-//   })
-// }
-
 export function CartContexProvider({children}: CartContextProviderProps) {
-  // let cart: CartContextType;
+  
   const [coffees, setCoffees] = useState<CoffeeCart[]>([])
+  const [resume, setResume] = useState<ResumeInfo>()
   const [cartQuantity, setCartQuantity] = useState(0);
   const [cartSubTotal, setCartSubTotal] = useState(0);
-
-  // const [cartState, dispatch] = useReducer(cartReducer, {
-  //   coffees: [],
-  //   // total: 0,
-  //   // subTotal: 0,
-  //   // delivery: 0
-  // })
-
-  // const {coffees, delivery, subTotal, total} = cartState
 
   function addCoffeeInCart(coffeeTitle: string) {
     const existCoffee = coffees.find(coffee => coffee.title === coffeeTitle);
@@ -79,6 +69,8 @@ export function CartContexProvider({children}: CartContextProviderProps) {
 
     calculatePrice();
   }
+
+
 
   function withDrawCoffeeInCart(coffeeTitle: string) {
     const existCoffee = coffees.find(coffee => coffee.title === coffeeTitle);
@@ -115,6 +107,10 @@ export function CartContexProvider({children}: CartContextProviderProps) {
 
     setCartSubTotal(subTotalPrice);
   }
+
+  function addResumeInfo(data: ResumeInfo) {
+    setResume(data);
+  }
   
   return(
     <CartContext.Provider
@@ -122,6 +118,8 @@ export function CartContexProvider({children}: CartContextProviderProps) {
         coffees,
         cartQuantity,
         cartSubTotal,
+        resume,
+        addResumeInfo,
         addCoffeeInCart,
         withDrawCoffeeInCart
       }}
