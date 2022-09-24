@@ -1,5 +1,6 @@
 import { AddressContainer, CartItem, CartItemDescription, CartItemDescriptionButtons, CartSummary, CheckoutContainer, ClienteData, CoffeeData, ConfirmButton, InputS1, InputS2, InputS3, InputS4, InputS5, PaymentContainer, PaymentSelect } from "./styles";
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import { MapPinLine, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, Trash } from "phosphor-react"
 
@@ -15,12 +16,13 @@ export function Checkout() {
   const deliveryPrice = 3.50;
   const cartTotal = cartSubTotal + deliveryPrice;
 
-  let payments = {credito: true, debito: false, dinheiro: false}
-  const teste = watch('payment')
+  const navigate = useNavigate();
 
   function handleCreateNewAddress(data: any) {
     console.log(data)
     reset()
+
+    navigate('/resume')
   }
 
   function handleAddCoffee(coffeeTitle: string) {
@@ -39,11 +41,6 @@ export function Checkout() {
     }
 
     return quantity
-  }
-
-  function handleSelectPayment() {
-    
-    console.log(teste)
   }
 
   return (
