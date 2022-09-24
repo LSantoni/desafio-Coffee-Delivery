@@ -108,7 +108,7 @@ export const PaymentSelect = styled.div`
   gap: 0.75rem;
   padding: 1rem 0;
 
-  div {
+  div, label {
     width: 11.1rem;
     background: ${props => props.theme["base-button"]};
     border-radius: 6px;
@@ -128,7 +128,7 @@ export const PaymentSelect = styled.div`
     display: none;
   }
 
-  input[type="radio"]:checked + div {
+  input[type="radio"]:checked + label {
     background: ${props => props.theme["purple-light"]};
     border: 1px solid ${props => props.theme.purple};
   }

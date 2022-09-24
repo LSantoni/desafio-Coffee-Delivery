@@ -9,11 +9,14 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
 export function Checkout() {
-  const { register, handleSubmit, reset } = useForm()
+  const { register, handleSubmit, reset, watch } = useForm()
   const { coffees, cartSubTotal, addCoffeeInCart, withDrawCoffeeInCart } = useContext(CartContext);
 
   const deliveryPrice = 3.50;
   const cartTotal = cartSubTotal + deliveryPrice;
+
+  let payments = {credito: true, debito: false, dinheiro: false}
+  const teste = watch('payment')
 
   function handleCreateNewAddress(data: any) {
     console.log(data)
@@ -36,6 +39,11 @@ export function Checkout() {
     }
 
     return quantity
+  }
+
+  function handleSelectPayment() {
+    
+    console.log(teste)
   }
 
   return (
@@ -99,21 +107,36 @@ export function Checkout() {
               </div>
             </header>
             <PaymentSelect>
-              <input type="radio" name="credito" id="cred" />
-              <div>
+              <input
+                type="radio" 
+                id="cred"
+                value="credito"
+                {...register('payment')}
+              />
+              <label htmlFor="cred">
                 <CreditCard size={20} />
                 CARTÃO DE CRÉDITO
-              </div>
-              <input type="radio" name="debito" id="deb" />
-              <div>
+              </label>
+              <input 
+                type="radio"
+                id="deb"
+                value="debito"
+                {...register('payment')}
+              />
+              <label htmlFor="deb">
                 <Bank size={20} />
                 CARTÃO DE DÉBITO
-              </div>
-              <input type="radio" name="dinheiro" id="din" />
-              <div>
+              </label>
+              <input 
+                type="radio"
+                id="din"
+                value="dinheiro"
+                {...register('payment')}
+              />
+              <label htmlFor="din">
                 <Money size={20} />
                 DINHEIRO
-              </div>
+              </label>
             </PaymentSelect>
           </PaymentContainer>
         </ClienteData>
