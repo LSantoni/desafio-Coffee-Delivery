@@ -11,7 +11,7 @@ import { CartContext } from "../../context/CartContext";
 
 export function Checkout() {
   const { register, handleSubmit, reset } = useForm()
-  const { coffees, cartSubTotal, addCoffeeInCart, withDrawCoffeeInCart, addResumeInfo, calculatePrice } = useContext(CartContext);
+  const { coffees, cartSubTotal, addCoffeeInCart, withDrawCoffeeInCart, addResumeInfo, calculatePrice, clearCart } = useContext(CartContext);
 
   const deliveryPrice = 3.50;
   const cartTotal = calculatePrice() + deliveryPrice;
@@ -20,7 +20,8 @@ export function Checkout() {
 
   function handleCreateNewAddress(data: any) {
     addResumeInfo(data);
-    reset()
+    reset();
+    clearCart();
 
     navigate('/resume')
   }

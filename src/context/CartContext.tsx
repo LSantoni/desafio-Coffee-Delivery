@@ -25,6 +25,7 @@ interface CartContextType {
   withDrawCoffeeInCart: (title: string) => void;
   addResumeInfo: (data: ResumeInfo) => void;
   calculatePrice: () => number;
+  clearCart: () => void;
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -108,6 +109,12 @@ export function CartContexProvider({children}: CartContextProviderProps) {
   function addResumeInfo(data: ResumeInfo) {
     setResume(data);
   }
+
+  function clearCart() {
+    setCoffees([])
+    setCartQuantity(0)
+    setCartSubTotal(0)
+  }
   
   return(
     <CartContext.Provider
@@ -119,7 +126,8 @@ export function CartContexProvider({children}: CartContextProviderProps) {
         addResumeInfo,
         addCoffeeInCart,
         withDrawCoffeeInCart,
-        calculatePrice
+        calculatePrice,
+        clearCart
       }}
     >
       {children}
