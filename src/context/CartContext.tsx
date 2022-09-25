@@ -26,6 +26,7 @@ interface CartContextType {
   addResumeInfo: (data: ResumeInfo) => void;
   calculatePrice: () => number;
   clearCart: () => void;
+  removeCoffeeOfCart: (coffeeTitle: string) => void;
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -95,6 +96,19 @@ export function CartContexProvider({children}: CartContextProviderProps) {
     }
   }
 
+  function removeCoffeeOfCart(coffeeTitle: string) {
+    const updatedCoffeeList = coffees.filter(coffee => coffee.title !== coffeeTitle);
+
+      setCoffees(updatedCoffeeList)
+
+      let newQuantity = 0;
+      updatedCoffeeList.map(cl => {
+        newQuantity += cl.quantity;
+      })
+      setCartQuantity(newQuantity)
+    
+  }
+
   function calculatePrice() {
     let subTotalPrice = 0;
     coffees.map(c => {
@@ -127,7 +141,8 @@ export function CartContexProvider({children}: CartContextProviderProps) {
         addCoffeeInCart,
         withDrawCoffeeInCart,
         calculatePrice,
-        clearCart
+        clearCart,
+        removeCoffeeOfCart
       }}
     >
       {children}

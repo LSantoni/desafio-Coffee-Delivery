@@ -31,6 +31,7 @@ export const HeaderConteiner = styled.header`
       justify-content: center;
       align-items: center;
       padding: 0 1rem;
+      gap: 0.25rem;
 
       color: ${props => props.theme["purple-dark"]};
       background: ${props => props.theme["purple-light"]};
