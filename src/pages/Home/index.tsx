@@ -101,7 +101,7 @@ export function Home() {
                         <Plus size={14} />
                       </button>
                     </div>
-                    <a href="">
+                    <a href="/checkout">
                       <ShoppingCart size={20} />
                     </a>
                   </CoffeeValueContainer>
