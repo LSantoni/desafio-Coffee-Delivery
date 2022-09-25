@@ -31,7 +31,7 @@ export function Checkout() {
           addResumeInfo, calculatePrice, clearCart, removeCoffeeOfCart
         } = useContext(CartContext);
 
-  const deliveryPrice = 3.50;
+  const deliveryPrice = coffees.length > 0 ? 3.50 : 0;
   const cartTotal = calculatePrice() + deliveryPrice;
 
   const navigate = useNavigate();
@@ -83,17 +83,17 @@ export function Checkout() {
               <InputS2 
                 type="text" 
                 placeholder="CEP" 
-                {...register('zipCode')} 
+                {...register('zipCode', { required: true })} 
               />
               <InputS5 
                 type="text" 
                 placeholder="Rua"
-                {...register('address')} 
+                {...register('address', { required: true })} 
               />
               <InputS2 
                 type="number" 
                 placeholder="Número"
-                {...register('number', { valueAsNumber: true })}
+                {...register('number', { valueAsNumber: true, required: true })}
               />
               <InputS4 
                 type="text" 
@@ -103,18 +103,18 @@ export function Checkout() {
               <InputS2 
                 type="text" 
                 placeholder="Bairro"
-                {...register('district')}
+                {...register('district', { required: true })}
               />
               <InputS3 
                 type="text" 
                 placeholder="Cidade"
-                {...register('city')}
+                {...register('city', { required: true })}
               />
               <InputS1 
                 type="text" 
                 placeholder="UF"
                 maxLength={2}
-                {...register('state')}
+                {...register('state', { required: true })}
               />
             </div>
           </AddressContainer>
@@ -131,7 +131,7 @@ export function Checkout() {
                 type="radio" 
                 id="cred"
                 value="Cartão de Crédito"
-                {...register('payment')}
+                {...register('payment', { required: true })}
               />
               <label htmlFor="cred">
                 <CreditCard size={20} />
@@ -141,7 +141,7 @@ export function Checkout() {
                 type="radio"
                 id="deb"
                 value="Cartão de Débito"
-                {...register('payment')}
+                {...register('payment', { required: true })}
               />
               <label htmlFor="deb">
                 <Bank size={20} />
@@ -151,7 +151,7 @@ export function Checkout() {
                 type="radio"
                 id="din"
                 value="Dinheiro"
-                {...register('payment')}
+                {...register('payment', { required: true })}
               />
               <label htmlFor="din">
                 <Money size={20} />
