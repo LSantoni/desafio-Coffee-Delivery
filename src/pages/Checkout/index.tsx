@@ -1,8 +1,8 @@
 import { AddressContainer, CartItem, CartItemDescription, CartItemDescriptionButtons, CartSummary, CheckoutContainer, ClienteData, CoffeeData, ConfirmButton, InputS1, InputS2, InputS3, InputS4, InputS5, PaymentContainer, PaymentSelect } from "./styles";
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
-import { useNavigate } from 'react-router-dom'
 
 import { MapPinLine, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, Trash } from "phosphor-react"
 
@@ -32,6 +32,7 @@ export function Checkout() {
         } = useContext(CartContext);
 
   const deliveryPrice = coffees.length > 0 ? 3.50 : 0;
+  const confirmButtonDisabled = !(coffees.length>0);
   const cartTotal = calculatePrice() + deliveryPrice;
 
   const navigate = useNavigate();
@@ -205,7 +206,7 @@ export function Checkout() {
                 <p>{cartTotal}</p>
               </div>
             </CartSummary>
-            <ConfirmButton type="submit">CONFIRMAR PEDIDO</ConfirmButton>
+            <ConfirmButton disabled={confirmButtonDisabled} type="submit">CONFIRMAR PEDIDO</ConfirmButton>
           </CoffeeData>
         </div>
       </form>
