@@ -1,5 +1,7 @@
 import { AddressContainer, CartItem, CartItemDescription, CartItemDescriptionButtons, CartSummary, CheckoutContainer, ClienteData, CoffeeData, ConfirmButton, InputS1, InputS2, InputS3, InputS4, InputS5, PaymentContainer, PaymentSelect } from "./styles";
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as zod from 'zod'
 import { useNavigate } from 'react-router-dom'
 
 import { MapPinLine, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, Trash } from "phosphor-react"
@@ -9,9 +11,22 @@ const imagePath = 'src/assets/coffees/';
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
+const newAddressFormValidationSchema = zod.object({
+  zipCode: zod.string().min(8, 'Informe um CEP válido'),
+  address: zod.string().min(1, 'Informe um endereço válido'),
+  number: zod.number().min(0, 'O número deve ser maior que 0'),
+  complement: zod.string(),
+  district: zod.string().min(1, 'Informe seu bairro'),
+  city: zod.string().min(1, 'Informe sua cidade'),
+  state: zod.string().min(2, 'Informe seu bairro'),
+  payment: zod.string().min(1, 'Informe o método de pagamento'),
+})
+
 export function Checkout() {
-  const { register, handleSubmit, reset } = useForm()
-  const { coffees, cartSubTotal, addCoffeeInCart, withDrawCoffeeInCart, addResumeInfo, calculatePrice, clearCart } = useContext(CartContext);
+  const { register, handleSubmit, reset, formState } = useForm({
+    resolver: zodResolver(newAddressFormValidationSchema),
+  })
+  const { coffees, addCoffeeInCart, withDrawCoffeeInCart, addResumeInfo, calculatePrice, clearCart } = useContext(CartContext);
 
   const deliveryPrice = 3.50;
   const cartTotal = calculatePrice() + deliveryPrice;
