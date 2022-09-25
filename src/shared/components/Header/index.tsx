@@ -7,7 +7,7 @@ import { CartContext } from "../../../context/CartContext";
 import { NavLink } from "react-router-dom"
 
 export function Header() {
-  const { cartQuantity } = useContext(CartContext)
+  const { cartQuantity, resume } = useContext(CartContext)
 
   function handleShowCartQuantity() {
     return cartQuantity;
@@ -17,7 +17,9 @@ export function Header() {
     <HeaderConteiner>
       <img src={logoApp} alt="" />
       <nav>
-        <span>endereço</span>
+        {resume && (
+          <span>{resume.city}, {resume.state}</span>
+        )}
         <NavLink to="/checkout">
           <ShoppingCart size={24} />
           {cartQuantity > 0 && (
